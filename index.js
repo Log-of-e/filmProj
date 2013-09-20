@@ -16,7 +16,7 @@ MongoClient.connect(mongo_port, function(err, db) {
 
     // default route does nothing
     app.get('/', function(req, res) {
-    	res.write('welcome to filmProj 0.1');
+    	res.send('welcome to filmProj 0.1');
     	res.end();
     });
 
