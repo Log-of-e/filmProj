@@ -3,12 +3,19 @@ var format = require('util').format;
 var express = require('express')
   , app = express() 
   , MongoClient = require('mongodb').MongoClient
-  , port    = process.env.PORT || '1230'
-  , mongo_port = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost:27017/filmProj';
+  , ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1'
+  , port    = process.env.OPENSHIFT_NODEJS_PORT || '1230'
+  , mongo_port = 'localhost:27017/filmProj';
 
-MongoClient.connect(mongo_port, function(err, db) {
+  if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+      mongo_port = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+      process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+      process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+      process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+      process.env.OPENSHIFT_APP_NAME;
+    };
+
+MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
     "use strict";
     if(err) throw err;
 
@@ -16,7 +23,7 @@ MongoClient.connect(mongo_port, function(err, db) {
 
     // default route does nothing
     app.get('/', function(req, res) {
-    	res.send('welcome to filmProj 0.1');
+    	res.write('welcome to filmProj 0.1');
     	res.end();
     });
 
