@@ -5,7 +5,7 @@ var express = require('express')
   , MongoClient = require('mongodb').MongoClient
   , ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1'
   , port    = process.env.OPENSHIFT_NODEJS_PORT || '1230'
-  , mongo_port = 'localhost:27017/filmProj';
+  , mongo_port = 'mongodb://localhost:27017/filmProj';
 
   if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
       mongo_port = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -15,7 +15,7 @@ var express = require('express')
       process.env.OPENSHIFT_APP_NAME;
     };
 
-MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
+MongoClient.connect(mongo_port, function(err, db) {
     "use strict";
     if(err) throw err;
 
