@@ -180,7 +180,7 @@ MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
     });
 
     // remove follow
-    app.post('/bid/remove', function(req, res) {
+    app.post('/follow/remove', function(req, res) {
         var document = req.body;
         var project_identifier = document.project_id;
         var account_identifier = document.account_id;
