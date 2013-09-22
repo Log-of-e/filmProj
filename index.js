@@ -2,22 +2,10 @@
 var express = require('express')
   , app = express() 
   , MongoClient = require('mongodb').MongoClient
-  , ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1'
-  , port    = process.env.OPENSHIFT_NODEJS_PORT || '1230'
-  , mongo_port;
-if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-  mongo_port = mongo_port = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-      process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-      process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-      process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-      process.env.OPENSHIFT_APP_NAME
-  } else {
-    mongo_port = 'localhost:27017/filmProj'
-  }
-
-      console.log(mongo_port);
+  , mongo_port = 'nodejitsu_rfatahi123:raoajp49nan4ni1fsd9pd314gg@ds045988.mongolab.com:45988/nodejitsu_rfatahi123_nodejitsudb4462269432' || 'localhost:27017/filmProj';
 
 MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
+    console.log('hello, connected to mongodb://' + mongo_port);
     "use strict";
     if(err) throw err;
 
@@ -218,6 +206,6 @@ MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
     });
         
 
-    app.listen(port);
-    console.log('Express server listening on port ' + port);
+    app.listen(1230);
+    console.log('Express server now listening');
     });

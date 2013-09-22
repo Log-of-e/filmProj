@@ -1,1 +1,1 @@
-{"name":"filmProj", "date":[{"v":"0.0.1", "date":"09/12/13"}], "description":"film microfunding","dependencies":{"express":"3.x", "mongodb":"*"},"engines":{"node": ">=0.10"}}
+{"name":"filmProj","date":[{"v":"0.0.1","date":"09/12/13"}],"description":"film microfunding","dependencies":{"express":"3.x","mongodb":"*"},"engines":{"node":">=0.10"},"subdomain":"rfatahi123-filmProj","scripts":{"start":"node index.js"},"version":"0.0.0"}
