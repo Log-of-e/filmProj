@@ -2,7 +2,7 @@
 var express = require('express')
   , app = express() 
   , MongoClient = require('mongodb').MongoClient
-  , mongo_port = 'nodejitsu_rfatahi123:raoajp49nan4ni1fsd9pd314gg@ds045988.mongolab.com:45988/nodejitsu_rfatahi123_nodejitsudb4462269432' || 'localhost:27017/filmProj';
+  , mongo_port = 'localhost:27017/filmProj';
 
 MongoClient.connect(('mongodb://' + mongo_port), function(err, db) {
     console.log('hello, connected to mongodb://' + mongo_port);
